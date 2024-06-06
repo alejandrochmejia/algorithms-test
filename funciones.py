@@ -1,3 +1,4 @@
+from functools import cmp_to_key
 #Alejandro Chávez (32.278.392)
 #José Santana()
 
@@ -39,9 +40,36 @@ def mergesortlistas(lista):
     return mergelistas(mergesortlistas(left), mergesortlistas(right))
 
 #Operacion C
+def shellsortalfabetico(lista):
+    n = len(lista)
+    intervalo = n // 2
+    while intervalo > 0:
+        for i in range(intervalo, n):
+            temp = lista[i]
+            j = i
+            while j >= intervalo and lista[j - intervalo] > temp:
+                lista[j] = lista[j - intervalo]
+                j -= intervalo
+            lista[j] = temp
+        intervalo //= 2
+    return lista
 
 #Operacion D
 
 #Operacion E
 
 #Operacion F
+def display_hash(hashTable):
+    for i in range(len(hashTable)):
+        print(i, end=" ")
+    for j in hashTable[i]:
+        print("-->", end=" ")
+        print(j, end=" ")
+    print()
+
+def Hashing(keyvalue,HashTable):
+    return keyvalue % len(HashTable)
+
+def insert(Hashtable, keyvalue, value):
+    hash_key = Hashing(keyvalue,Hashtable)
+    Hashtable[hash_key].append(value)

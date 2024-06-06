@@ -62,7 +62,22 @@ class Reporte:
 
     def opcion3(self):
         global proyectos
-        pass
+        lista = []
+        print("\nN total de proyectos: " + str(len(proyectos)))
+        n = input("Elija el proyecto a usar (escriba un numero del 1 al N): ")
+        n = int(n)
+        if int(n) > 0 and int(n) <= len(proyectos):
+            for i in range(len(proyectos[n-1].tareas)):
+                for j in range(len(proyectos[n-1].tareas[i].subtareas)):
+                    if proyectos[n-1].tareas[i].subtareas[j].condicion == "Completada":
+                        lista.append(proyectos[n-1].tareas[i].subtareas[j].titulo)
+            print("Lista:",lista)
+            lista = funciones.shellsortalfabetico(lista)
+            print("Lista Ordenada:",lista)
+            print()
+        else:
+            print("Proyecto Inexistente")
+            print()
 
     def opcion4(self):
         global proyectos
@@ -74,7 +89,15 @@ class Reporte:
 
     def opcion6(self):
         global proyectos
-        pass
+        lista = []
+        print("\nN total de proyectos: " + str(len(proyectos)))
+        n = input("Elija el proyecto a usar (escriba un numero del 1 al N): ")
+        n = int(n)
+        if int(n) > 0 and int(n) <= len(proyectos):
+            HashTable = [[] for _ in range(len(proyectos[n].tareas))]
+            for i in range(len(proyectos[n].tareas)):
+                funciones.insert(HashTable,int(proyectos[n].tareas[i].inicio.strftime("%y-%m-%d").split("-")[0]),proyectos[n].tareas[i])
+            funciones.display_hash(HashTable)
 
 rep = Reporte()
 band = True
