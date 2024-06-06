@@ -94,9 +94,9 @@ class Reporte:
         n = input("Elija el proyecto a usar (escriba un numero del 1 al N): ")
         n = int(n)
         if int(n) > 0 and int(n) <= len(proyectos):
-            HashTable = [[] for _ in range(len(proyectos[n].tareas))]
-            for i in range(len(proyectos[n].tareas)):
-                funciones.insert(HashTable,int(proyectos[n].tareas[i].inicio.strftime("%y-%m-%d").split("-")[0]),proyectos[n].tareas[i])
+            HashTable = [[] for _ in range(len(proyectos[n-1].tareas))]
+            for i in range(len(proyectos[n-1].tareas)):
+                funciones.insert(HashTable,int(proyectos[n-1].tareas[i].inicio.strftime("%y-%m-%d").split("-")[0]),proyectos[n-1].tareas[i])
             funciones.display_hash(HashTable)
 
 rep = Reporte()
