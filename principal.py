@@ -4,7 +4,7 @@
 import carga
 import funciones
 from datetime import datetime
-proyectos = carga.cargar_datos_desde_json('datos_prueba.json')
+proyectos = carga.cargar_datos_desde_json('algorithms-test/datos_prueba.json')
 
 class Reporte:
     def menu(self):
@@ -103,7 +103,7 @@ class Reporte:
                         temp[k] = int(temp[k])
                     lista.append(temp)
         print("Lista: ",lista)
-        lista = funciones1.heapsort(lista)
+        lista = funciones.heapsort(lista)
         print("Lista ordenada: ", lista)
         print()
 
