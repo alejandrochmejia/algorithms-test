@@ -1,3 +1,5 @@
+#Alejandro Chávez (32.278.392)
+#José Santana()
 
 class Proyecto:
     def __init__(self,id,titulo,detalles,inicio,vencimiento,condicion,organizacion,responsable,grupo):

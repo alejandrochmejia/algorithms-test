@@ -1,3 +1,6 @@
+#Alejandro Chávez (32.278.392)
+#José Santana()
+
 import json
 from datetime import datetime
 from clases import Proyecto,Tarea,Subtarea
