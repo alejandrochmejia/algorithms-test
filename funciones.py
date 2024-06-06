@@ -60,31 +60,56 @@ def merge_sort(lista):
         return lista
 
     mid = len(lista) // 2
-    left_half = lista[:mid]
-    right_half = lista[mid:]
+    izquierda_lista = lista[:mid]
+    derecha_lista = lista[mid:]
 
-    return merge(merge_sort(left_half), merge_sort(right_half))
+    return merge(merge_sort(izquierda_lista), merge_sort(derecha_lista))
 
 
 def merge(left, right):
-    merged = []
-    left_index = 0
-    right_index = 0
+    result = []
+    izquierda_elementos = 0
+    derecha_elementos = 0
 
-    while left_index < len(left) and right_index < len(right):
-        if left[left_index] <= right[right_index]:
-            merged.append(left[left_index])
-            left_index += 1
+    while izquierda_elementos < len(left) and derecha_elementos < len(right):
+        if left[izquierda_elementos] <= right[derecha_elementos]:
+            result.append(left[izquierda_elementos])
+            izquierda_elementos += 1
         else:
-            merged.append(right[right_index])
-            right_index += 1
+            result.append(right[derecha_elementos])
+            derecha_elementos += 1
 
-    merged.extend(left[left_index:])
-    merged.extend(right[right_index:])
+    result.extend(left[izquierda_elementos:])
+    result.extend(right[derecha_elementos:])
 
-    return merged
+    return result
 #Operacion E
+def heapsort(arr):
+    def heapify(arr, n, i):
+        Masgrande = i
+        l = 2 * i + 1
+        r = 2 * i + 2
 
+        if l < n and arr[i] < arr[l]:
+            Masgrande = l
+
+        if r < n and arr[Masgrande] < arr[r]:
+            Masgrande = r
+
+        if Masgrande != i:
+            arr[i], arr[Masgrande] = arr[Masgrande], arr[i]
+            heapify(arr, n, Masgrande)
+
+    n = len(arr)
+
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    for i in range(n - 1, -1, -1):
+        arr[0], arr[i] = arr[i], arr[0]
+        heapify(arr, i, 0)
+
+    return arr
 #Operacion F
 def display_hash(hashTable):
     for i in range(len(hashTable)):
