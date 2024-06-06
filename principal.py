@@ -93,7 +93,19 @@ class Reporte:
 
     def opcion5(self):
         global proyectos
-        pass
+        valor = int(input("Ingrese el valor especifico: "))
+        lista = []
+        for i in range(len(proyectos)):
+            for j in range(len(proyectos[i].tareas)):
+                if proyectos[i].tareas[j].avance < valor:
+                    temp = proyectos[i].tareas[j].vencimiento.strftime("%y-%m-%d").split("-")
+                    for k in range(len(temp)):
+                        temp[k] = int(temp[k])
+                    lista.append(temp)
+        print("Lista: ",lista)
+        lista = funciones1.heapsort(lista)
+        print("Lista ordenada: ", lista)
+        print()
 
     def opcion6(self):
         global proyectos
